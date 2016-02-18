@@ -1,6 +1,6 @@
 {
   "name": "sdebug",
-  "version": "0.0.1",
+  "version": "0.9.0",
   "description": "A wrapper around debug() to add structured data logging.",
   "repository": {
     "type": "git",
