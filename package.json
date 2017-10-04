@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "standard",
     "test": "npm run test-security",
-    "test-security": "nsp check",
+    "test-security": "nsp check"
   },
   "repository": {
     "type": "git",
