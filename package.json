@@ -1,7 +1,12 @@
 {
   "name": "sdebug",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "A wrapper around debug() to add structured data logging.",
+  "scripts": {
+    "lint": "standard",
+    "test": "npm run test-security",
+    "test-security": "nsp check",
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/brave/sdebug.git"
@@ -13,12 +18,24 @@
   },
   "homepage": "https://github.com/brave/sdebug",
   "dependencies": {
-    "debug": "2.2.0",
+    "debug": "2.6.9",
     "transliteration": "0.1.1",
     "underscore": "1.8.3"
   },
   "engines": {
-    "node": "5.6.0",
-    "npm": "3.6.0"
+    "node": "7.10.1",
+    "npm": "4.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-eslint": "^8.0.0",
+    "npm-check-updates": "^2.12.1",
+    "nsp": "^2.8.0",
+    "standard": "10.0.3",
+    "supertest": "^3.0.0",
+    "throng": "4.0.0"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
