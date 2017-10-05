@@ -4,7 +4,9 @@
 
 var path = require('path')
 var slugify = require('transliteration').slugify
+var stripansi = require('strip-ansi')
 var underscore = require('underscore')
+var util = require('util')
 
 exports = module.exports = function (namespace) {
   var sdebug = new (require('debug'))(path.parse(namespace).name)
@@ -48,10 +50,10 @@ exports = module.exports = function (namespace) {
     return sdata
   }
 
-  require('debug').formatArgs = function () {
-    var prefix
+  require('debug').log = function () {
+    var arg0, arg00, prefix
     var args = [ '' ]
-    var name = this.namespace
+    var name = this.namespace.trim()
 
     if (!this.initial) this.initial = ''
     if (!this.options) this.options = { nilvalue: '-', lowercase: false, separator: '_', pen: 1104 }
@@ -77,9 +79,21 @@ exports = module.exports = function (namespace) {
       }
     }.bind(this))
     if (this.initial !== prefix) { prefix = ' ' + prefix }
-    args[0] = name + prefix + ' ' + arguments[0]
+    arg00 = stripansi(arguments[0])
+    if ((typeof arg00 !== 'string') || (arg00.trim().indexOf(stripansi(name)) !== 0)) arg0 = arguments[0]
+    else arg0 = arguments[0].slice(name.length - 1)
+    args[0] = name + prefix + ' ' + arg0
 
-    return args
+    var line = ''
+    var s = ''
+
+    if (args[0].indexOf('%') !== -1) return process.stdout.write(util.format.apply(util, args) + '\n')
+
+    args.forEach((arg) => {
+      line += s + ((typeof arg === 'string') ? arg : JSON.stringify(arg))
+      s = ' '
+    })
+    return process.stdout.write(line + '\n')
   }
 
   sdebug.config = function (config) {
