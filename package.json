@@ -1,6 +1,6 @@
 {
   "name": "sdebug",
-  "version": "0.9.4",
+  "version": "1.0.0",
   "description": "A wrapper around debug() to add structured data logging.",
   "scripts": {
     "lint": "standard",
