@@ -18,23 +18,11 @@
   },
   "homepage": "https://github.com/brave/sdebug",
   "dependencies": {
-    "debug": "2.6.9",
-    "transliteration": "0.1.1",
-    "underscore": "1.8.3"
+    "debug": "^4.2.0",
+    "transliteration": "^2.2.0",
+    "underscore": "^1.11.0"
   },
-  "engines": {
-    "node": "7.10.1",
-    "npm": "4.2.0"
-  },
-  "devDependencies": {
-    "ava": "^0.22.0",
-    "babel-eslint": "^8.0.0",
-    "npm-check-updates": "^2.12.1",
-    "nsp": "^2.8.0",
-    "standard": "10.0.3",
-    "supertest": "^3.0.0",
-    "throng": "4.0.0"
-  },
+  "devDependencies": {},
   "standard": {
     "parser": "babel-eslint"
   }
